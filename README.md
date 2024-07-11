@@ -116,9 +116,9 @@ build_model_input(model, processor)
 ```
 
 ### TODO
-- llava项目基于二阶段训练，先进行Pretraining，再进行Fine-tuning。Pretraining训练的部分：multi_modal_projector，
+- [ ] llava项目基于二阶段训练，先进行Pretraining，再进行Fine-tuning。Pretraining训练的部分：multi_modal_projector，
 Fine-tuning训练的部分：language_model + multi_modal_projector。本项目后续基于上述思路进行优化，比较两者差异。
-- 对llava-Qwen2-7B-Instruct-Chinese-CLIP模型进行更全面测评。
+- [ ] 对llava-Qwen2-7B-Instruct-Chinese-CLIP模型进行更全面测评。
 
 ### 致谢
 
