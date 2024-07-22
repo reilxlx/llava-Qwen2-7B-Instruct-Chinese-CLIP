@@ -11,7 +11,7 @@
    - 数据集：数据集v1改进版（在原v1基础上，增加了Claude 3.5 Sonnet模型对meme和ChineseBQB的识别数据）
    - 效果：表情包问答输出效果最佳，但纯文字图片识别效果一般
 
-2. 实验编号12（两阶段训练）：
+2. 实验编号12（两阶段训练）：</br>
    第一阶段：
    - 模型：Qwen2-7B-Instruct
    - 视觉编码器：OFA-Sys/chinese-clip-vit-large-pathc14-336px
