@@ -1,5 +1,5 @@
 ## 模型 llava-Qwen2-7B-Instruct-Chinese-CLIP 增强中文文字识别能力和表情包内涵识别能力，达到gpt4o、claude-3.5-sonnet的水平！
-<img src="./images/llava_qwen_2b_chinese-clip.jpg" alt="logo" style="display: block; margin: 0 auto;" width="300" height="300">
+<img src="./images/images_llava_qwen_2b_chinese-clip.jpg" alt="logo" style="display: block; margin: 0 auto;" width="300" height="300">
 
 ### 完整模型下载</br>
 #### 更新日志
