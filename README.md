@@ -1,7 +1,11 @@
 ## 模型 llava-Qwen2-7B-Instruct-Chinese-CLIP 增强中文文字识别能力和表情包内涵识别能力，达到gpt4o、claude-3.5-sonnet的水平！
+<img src="./images/llava_qwen_2b_chinese-clip.jpg" alt="logo" style="display: block; margin: 0 auto;" width="300" height="300">
 
 ### 完整模型下载</br>
-https://huggingface.co/REILX/llava-Qwen2-7B-Instruct-Chinese-CLIP
+#### 更新日志
+[24/07/19] 上传模型v2：https://huggingface.co/REILX/v1llava-Qwen2-7B-Instruct-Chinese-CLIP-v2, 对比上一代模型REILX/llava-Qwen2-7B-Instruct-Chinese-CLIP，训练数据扩大至四种中文数据集，图片总数扩大47倍，文字总数扩大5倍。
+
+[24/07/09] 上传模型v1：https://huggingface.co/REILX/llava-Qwen2-7B-Instruct-Chinese-CLIP
 
 ### 模型结构</br>
 llava-Qwen2-7B-Instruct-Chinese-CLIP = Qwen/Qwen2-7B-Instruct + multi_modal_projector + OFA-Sys/chinese-clip-vit-large-patch14-336px</br>
@@ -11,18 +15,49 @@ llava-Qwen2-7B-Instruct-Chinese-CLIP = Qwen/Qwen2-7B-Instruct + multi_modal_proj
 - mmp层全量训练</br>
 
 ### 微调</br>
-参数：lora_r=32,lora_alpha=64,num_train_epochs=5,per_device_train_batch_size=1,gradient_accumulation_steps=8,high_lr=1e-3,low_lr=2e-5,model_max_length=2048.</br>
-设备：8*A800</br>
-训练时长：5小时12分钟
+#### v1
+- lora_r=32,lora_alpha=64,num_train_epochs=5,per_device_train_batch_size=1,gradient_accumulation_steps=8,high_lr=1e-3,low_lr=2e-5,model_max_length=2048.</br>
+- 设备：8*A800</br>
+- 训练时长：5小时12分钟
+
+#### v2
+- lora_r=32,lora_alpha=64,num_train_epochs=3,per_device_train_batch_size=1,gradient_accumulation_steps=8,high_lr=5e-4,low_lr=1e-5,model_max_length=2048.</br>
+- 设备：8*A800</br>
+- 训练时长：68小时06分钟
 
 ### 数据集</br>
-使用gemini-1.5-pro, gemini-1.5-flash, yi-vision, gpt4o,claude-3.5-sonnet模型描述emo-visual-data和ChineseBQB数据集。</br>
+#### v1
+- 使用gemini-1.5-pro, gemini-1.5-flash, yi-vision, gpt4o,claude-3.5-sonnet模型描述emo-visual-data和ChineseBQB数据集。</br>
 文本描述信息通过[text-description-of-the-meme](https://huggingface.co/datasets/REILX/text-description-of-the-meme) 下载</br>
 图像可通过[emo-visual-data](https://github.com/LLM-Red-Team/emo-visual-data), [ChineseBQB](https://github.com/zhaoolee/ChineseBQB)下载</br>
 图片数据总量1.8G，约10835张中文表情包图片。文字总量42Mb，约24332个图像文本对描述信息。
 
+#### v2
+- 使用gemini-1.5-pro, gemini-1.5-flash, yi-vision, gpt4o,claude-3.5-sonnet模型描述emo-visual-data和ChineseBQB数据集。</br>
+文本描述信息通过[text-description-of-the-meme](https://huggingface.co/datasets/REILX/text-description-of-the-meme) 下载</br>
+图像可通过[emo-visual-data](https://github.com/LLM-Red-Team/emo-visual-data), [ChineseBQB](https://github.com/zhaoolee/ChineseBQB)下载</br>
+图片数据总量1.8G，约10835张中文表情包图片。文字总量42Mb，约24332个图像文本对描述信息。
+- [priyank-m/chinese_text_recognition](https://huggingface.co/datasets/priyank-m/chinese_text_recognition)</br>
+图片数据总量2.0Gb，约500000张图片。文字总量207Mb，约500000个图像文本对描述信息。
+- [SWHL/ChineseOCRBench](https://huggingface.co/datasets/SWHL/ChineseOCRBench)</br>
+图片数据总量134Mb，约3410张图片。文字总量1.3Mb，约3410个图像文本对描述信息。
+- [fly0331/ChineseTest](https://huggingface.co/datasets/fly0331/ChineseTest)</br>
+图片数据总量530Mb，约6247张图片。文字总量5.4Mb，约6247个图像文本对描述信息。
+
+
 ### 效果展示</br>
 以下测试结果显示模型能识别图像中的文字信息，且能正确识别表情包想要表达的内涵。对比[REILX/llava-1.5-7b-hf-meme-lora](https://huggingface.co/REILX/llava-1.5-7b-hf-meme-lora)模型中也测试了原始llava-1.5-7b-hf模型的输出，模型无法正确识别图像中的文本信息。</br>
+**以下6张图片为llava-Qwen2-7B-Instruct-Chinese-CLIP-v2模型的识别效果**</br>
+<img src="./images/llava-qwen-2-7b-OFA-Syschinese-clip-chineseOCR_pri_fly_SWH_memechinese_lora_0716_warmup0_1_fp16/1.PNG" width="600" height="200">
+<img src="./images/llava-qwen-2-7b-OFA-Syschinese-clip-chineseOCR_pri_fly_SWH_memechinese_lora_0716_warmup0_1_fp16/2.PNG" width="600" height="200">
+<img src="./images/llava-qwen-2-7b-OFA-Syschinese-clip-chineseOCR_pri_fly_SWH_memechinese_lora_0716_warmup0_1_fp16/3.PNG" width="600" height="200">
+<img src="./images/llava-qwen-2-7b-OFA-Syschinese-clip-chineseOCR_pri_fly_SWH_memechinese_lora_0716_warmup0_1_fp16/4.PNG" width="600" height="200">
+<img src="./images/llava-qwen-2-7b-OFA-Syschinese-clip-chineseOCR_pri_fly_SWH_memechinese_lora_0716_warmup0_1_fp16/5.PNG" width="600" height="200">
+<img src="./images/llava-qwen-2-7b-OFA-Syschinese-clip-chineseOCR_pri_fly_SWH_memechinese_lora_0716_warmup0_1_fp16/6.PNG" width="600" height="200">
+<img src="./images/llava-qwen-2-7b-OFA-Syschinese-clip-chineseOCR_pri_fly_SWH_memechinese_lora_0716_warmup0_1_fp16/7.PNG" width="600" height="200">
+<img src="./images/llava-qwen-2-7b-OFA-Syschinese-clip-chineseOCR_pri_fly_SWH_memechinese_lora_0716_warmup0_1_fp16/8.PNG" width="600" height="200">
+<img src="./images/llava-qwen-2-7b-OFA-Syschinese-clip-chineseOCR_pri_fly_SWH_memechinese_lora_0716_warmup0_1_fp16/9.PNG" width="600" height="200">
+
 **以下6张图片为llava-Qwen2-7B-Instruct-Chinese-CLIP模型的识别效果**</br>
 <img src="./images/llava-qwen-2-7b-OFA-Syschinese-clip-memechinesebqb_merged_0708_fp16/llava-qwen2-7b-OFA-Syschinese-clip-fp16-01.PNG" width="600" height="200">
 <img src="./images/llava-qwen-2-7b-OFA-Syschinese-clip-memechinesebqb_merged_0708_fp16/llava-qwen2-7b-OFA-Syschinese-clip-fp16-02.PNG" width="600" height="200">
@@ -30,7 +65,8 @@ llava-Qwen2-7B-Instruct-Chinese-CLIP = Qwen/Qwen2-7B-Instruct + multi_modal_proj
 <img src="./images/llava-qwen-2-7b-OFA-Syschinese-clip-memechinesebqb_merged_0708_fp16/llava-qwen2-7b-OFA-Syschinese-clip-fp16-04.PNG" width="600" height="200">
 <img src="./images/llava-qwen-2-7b-OFA-Syschinese-clip-memechinesebqb_merged_0708_fp16/llava-qwen2-7b-OFA-Syschinese-clip-fp16-05.PNG" width="600" height="200">
 <img src="./images/llava-qwen-2-7b-OFA-Syschinese-clip-memechinesebqb_merged_0708_fp16/llava-qwen2-7b-OFA-Syschinese-clip-fp16-06.PNG" width="600" height="200">
-</br></br></br>
+</br>
+
 **以下6张图片为Qwen/Qwen2-7B-Instruct + multi_modal_projector + openai/clip-vit-large-patch14-336模型训练后的识别效果**</br>
 <img src="./images/llava-qwen-2-7b-openaiclip-memechinesebqb_merged_0709_fp16/llava-qwen2-7b-openaiclipL14-336-fp16-01.PNG" width="600" height="200">
 <img src="./images/llava-qwen-2-7b-openaiclip-memechinesebqb_merged_0709_fp16/llava-qwen2-7b-openaiclipL14-336-fp16-02.PNG" width="600" height="200">
@@ -38,7 +74,8 @@ llava-Qwen2-7B-Instruct-Chinese-CLIP = Qwen/Qwen2-7B-Instruct + multi_modal_proj
 <img src="./images/llava-qwen-2-7b-openaiclip-memechinesebqb_merged_0709_fp16/llava-qwen2-7b-openaiclipL14-336-fp16-04.PNG" width="600" height="200">
 <img src="./images/llava-qwen-2-7b-openaiclip-memechinesebqb_merged_0709_fp16/llava-qwen2-7b-openaiclipL14-336-fp16-05.PNG" width="600" height="200">
 <img src="./images/llava-qwen-2-7b-openaiclip-memechinesebqb_merged_0709_fp16/llava-qwen2-7b-openaiclipL14-336-fp16-06.PNG" width="600" height="200">
-</br></br></br>
+</br>
+
 **以下3张图为gpt4o的识别效果**</br>
 <img src="./images/gpt4o-01.JPG" width="600" height="400">
 <img src="./images/gpt4o-02.JPG" width="600" height="400">
