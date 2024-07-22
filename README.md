@@ -1,8 +1,28 @@
 ## 模型 llava-Qwen2-7B-Instruct-Chinese-CLIP 增强中文文字识别能力和表情包内涵识别能力，达到gpt4o、claude-3.5-sonnet的水平！
-<img src="./images/llava_qwen_2b_chinese-clip.jpg" alt="logo" style="display: block; margin: 0 auto;" width="300" height="300">
+<img src="./images/images_llava_qwen_2b_chinese-clip.jpg" alt="logo" style="display: block; margin: 0 auto;" width="300" height="300">
 
 ### 完整模型下载</br>
 #### 更新日志
+[24/07/22] 更新《llava-Qwen2-7B-Instruct-Chinese-CLIP训练手册》，总结了最近尝试的不同训练组合及其图像识别效果。重点描述以下两种组合：
+
+1. 实验编号13：
+   - 模型：Qwen2-7B-Instruct
+   - 视觉编码器：OFA-Sys/chinese-clip-vit-huge-pathc14
+   - 数据集：数据集v1改进版（在原v1基础上，增加了Claude 3.5 Sonnet模型对meme和ChineseBQB的识别数据）
+   - 效果：表情包问答输出效果最佳，但纯文字图片识别效果一般
+
+2. 实验编号12（两阶段训练）：
+   第一阶段：
+   - 模型：Qwen2-7B-Instruct
+   - 视觉编码器：OFA-Sys/chinese-clip-vit-large-pathc14-336px
+   - 数据集：数据集v2
+
+   第二阶段：
+   - 使用数据集v1改进版对第一阶段模型进行微调
+   - 效果：表情包问答输出效果良好，纯文字识别效果最佳。但由于数据集中的文字大多为单行，对多行文字图像的识别仅能返回第一行结果。
+
+详细信息请参阅《llava-Qwen2-7B-Instruct-Chinese-CLIP训练手册.xlsx》。
+
 [24/07/19] 上传模型v2：https://huggingface.co/REILX/v1llava-Qwen2-7B-Instruct-Chinese-CLIP-v2, 对比上一代模型REILX/llava-Qwen2-7B-Instruct-Chinese-CLIP，训练数据扩大至四种中文数据集，图片总数扩大47倍，文字总数扩大5倍。
 
 [24/07/09] 上传模型v1：https://huggingface.co/REILX/llava-Qwen2-7B-Instruct-Chinese-CLIP
@@ -47,7 +67,7 @@ llava-Qwen2-7B-Instruct-Chinese-CLIP = Qwen/Qwen2-7B-Instruct + multi_modal_proj
 
 ### 效果展示</br>
 以下测试结果显示模型能识别图像中的文字信息，且能正确识别表情包想要表达的内涵。对比[REILX/llava-1.5-7b-hf-meme-lora](https://huggingface.co/REILX/llava-1.5-7b-hf-meme-lora)模型中也测试了原始llava-1.5-7b-hf模型的输出，模型无法正确识别图像中的文本信息。</br>
-**以下6张图片为llava-Qwen2-7B-Instruct-Chinese-CLIP-v2模型的识别效果**</br>
+**以下9张图片为llava-Qwen2-7B-Instruct-Chinese-CLIP-v2模型的识别效果**</br>
 <img src="./images/llava-qwen-2-7b-OFA-Syschinese-clip-chineseOCR_pri_fly_SWH_memechinese_lora_0716_warmup0_1_fp16/1.PNG" width="600" height="200">
 <img src="./images/llava-qwen-2-7b-OFA-Syschinese-clip-chineseOCR_pri_fly_SWH_memechinese_lora_0716_warmup0_1_fp16/2.PNG" width="600" height="200">
 <img src="./images/llava-qwen-2-7b-OFA-Syschinese-clip-chineseOCR_pri_fly_SWH_memechinese_lora_0716_warmup0_1_fp16/3.PNG" width="600" height="200">
