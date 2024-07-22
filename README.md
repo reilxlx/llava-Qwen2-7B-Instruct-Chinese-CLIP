@@ -47,7 +47,7 @@ llava-Qwen2-7B-Instruct-Chinese-CLIP = Qwen/Qwen2-7B-Instruct + multi_modal_proj
 
 ### 效果展示</br>
 以下测试结果显示模型能识别图像中的文字信息，且能正确识别表情包想要表达的内涵。对比[REILX/llava-1.5-7b-hf-meme-lora](https://huggingface.co/REILX/llava-1.5-7b-hf-meme-lora)模型中也测试了原始llava-1.5-7b-hf模型的输出，模型无法正确识别图像中的文本信息。</br>
-**以下6张图片为llava-Qwen2-7B-Instruct-Chinese-CLIP-v2模型的识别效果**</br>
+**以下9张图片为llava-Qwen2-7B-Instruct-Chinese-CLIP-v2模型的识别效果**</br>
 <img src="./images/llava-qwen-2-7b-OFA-Syschinese-clip-chineseOCR_pri_fly_SWH_memechinese_lora_0716_warmup0_1_fp16/1.PNG" width="600" height="200">
 <img src="./images/llava-qwen-2-7b-OFA-Syschinese-clip-chineseOCR_pri_fly_SWH_memechinese_lora_0716_warmup0_1_fp16/2.PNG" width="600" height="200">
 <img src="./images/llava-qwen-2-7b-OFA-Syschinese-clip-chineseOCR_pri_fly_SWH_memechinese_lora_0716_warmup0_1_fp16/3.PNG" width="600" height="200">
